@@ -12,7 +12,7 @@ environment {
     stage('Checkout') { steps { checkout scm } }
     stage('Build & Test') {
       steps { sh "${MVN} clean test" }
-      post { always { junit 'target/surefire-reports/*.xml' } }
+      
     }
     stage('SAST - Sonar') {
       steps {
