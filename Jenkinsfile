@@ -46,7 +46,7 @@ environment {
     }
   }
   post {
-    failure { mail to: 'toi@example.com', subject: "Echec pipeline ${env.JOB_NAME}", body: "Voir ${env.BUILD_URL}" }
+    
     success { echo "Pipeline OK" }
   }
 }
