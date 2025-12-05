@@ -6,6 +6,7 @@ environment {
   PROD_USER = 'serveur'
   DEPLOY_PATH = '/tmp'
   APP_URL = "http://192.168.189.129:8080/e-commerce"
+ SONAR_TOKEN = credentials('sonar-token')
   SONAR_SERVER = 'SonarQube'
 }
   stages {
@@ -16,8 +17,8 @@ environment {
     }
     stage('SAST - Sonar') {
       steps {
-        withSonarQubeEnv("${SONAR_SERVER}") {
-          sh "${MVN} sonar:sonar"
+        withSonarQubeEnv('SonarQube') {
+          sh "${MVN} sonar:sonar -Dsonar.login=${SONAR_TOKEN}"
         }
       }
     }
